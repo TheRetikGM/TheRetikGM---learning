@@ -8,7 +8,6 @@ int main()
 	int x = 20;
 	int y = 10;
 	char items[3][1024] = {"Calculator", "Ascii art", "item3"};	
-	char items1[3][1024] = {"ahoj", "wassup", "boiiii"};
 	int focused = 1;
 
 	initscr();
@@ -18,7 +17,7 @@ int main()
 
 	bkgd(COLOR_PAIR(1));
 	getmaxyx(stdscr, maxy, maxx);
-	menu(10, 20, items);
+	menu(10, 40, items);
 	bkgd(COLOR_PAIR(1));
 	printw("%s", items[menu_out - 1]);
 	refresh();

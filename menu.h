@@ -17,7 +17,7 @@ int menu(int y, int x, char (*items) [1024])
 	box(win, 0, 0);
 	mvwprintw(win, 0, x/2 - 4, "| ");
 	wattron(win, COLOR_PAIR(3));
-	mvwprintw(win, 0, x/2 - 2, "MENU");
+	mvwprintw(win, 0, x/2 - 2, "DSCC");
 	wattroff(win, COLOR_PAIR(3));
 	mvwprintw(win, 0, x / 2 + 2, " |");
 	wrefresh(shadow);
