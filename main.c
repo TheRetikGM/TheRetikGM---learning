@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include "menu.h"
 #include <string.h>
+#include <unistd.h>
 
 char items[4][1024];
 
 void menu_cal()
 {
-	strcpy(items[0], "Next");
+	strcpy(items[0], "Next..");
 	strcpy(items[1], "Number system");
 	strcpy(items[2], "Angle unit");
 	strcpy(items[3], "<Back>");
@@ -50,12 +51,17 @@ int main()
 		else if (menus == 12) menu_cal_numsys(); 
 		menu(y, x, items);
 		bkgd(COLOR_PAIR(1));
-		
+		refresh();
+
 		if (menu_out == 1 && menus == 0) menus = 1;
 		else if (menu_out == 2 && menus == 0);
 		else if (menu_out == 3 && menus == 0);
 		else if (menu_out == 1 && menus == 1);
 		else if (menu_out == 2 && menus == 1) menus = 12;
+		else if (menu_out == 3 && menus == 1);
+		else if (menu_out == 1 && menus == 12) {/* sets numeral system to decimal */ menus = 1;}
+		else if (menu_out == 2 && menus == 12) {/* sets numeral system to Hexdecimal */ menus = 1;}
+		else if (menu_out == 3 && menus == 12) {/* sets numeral system to Binary */ menus = 1;}
 
 		if (strcmp(items[menu_out - 1], "<Exit>") == 0)
 		{
@@ -65,7 +71,9 @@ int main()
 		}
 		else if (strcmp(items[menu_out - 1], "<Back>") == 0)
 		{
-			menus--;
+			if (menus < 11) menus--;
+			else if (menus == 11) menus = 1;
+			else if (menus == 12) menus = 1;
 		}
 	}
 	return 0;
