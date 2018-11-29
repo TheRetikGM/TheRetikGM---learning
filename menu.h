@@ -45,6 +45,7 @@ int menu(int y, int x, char (*items) [1024])
 				mvwprintw(win, y - 2, x/2 - strlen(items[3])/2, items[i - 1]);	
 			}
 			wattroff(win, COLOR_PAIR(4));
+			mvwprintw(win, y - 3, 1, "______________________________________");
 			wrefresh(win);
 		}
 		int choice = mvwgetch(win, y - 2, 1);

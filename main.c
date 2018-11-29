@@ -5,20 +5,26 @@
 
 char items[4][1024];
 
-void menucal()
+void menu_cal()
 {
-	strcpy(items[0], "Decimal");
-	strcpy(items[1], "Hexdecimal");
-	strcpy(items[2], "Binary");
+	strcpy(items[0], "Next");
+	strcpy(items[1], "Number system");
+	strcpy(items[2], "Angle unit");
 	strcpy(items[3], "<Back>");
 }
 
-void mainmenu()
+void menu_main()
 {
 	strcpy(items[0], "Calculator");
 	strcpy(items[1], "Ascii art");
 	strcpy(items[2], "item3");
 	strcpy(items[3], "<Exit>");
+}
+void menu_cal_numsys()
+{
+	strcpy(items[0], "Decimal");
+	strcpy(items[1], "Hexdecimal");
+	strcpy(items[2], "Binary");
 }
 
 int main()
@@ -27,7 +33,7 @@ int main()
 	int x = 40;
 	int y = 10;
 	int focused = 1;
-	int menus = 1;
+	int menus = 0;
 	
 	while (1)
 	{
@@ -38,21 +44,19 @@ int main()
 
 		bkgd(COLOR_PAIR(1));
 		getmaxyx(stdscr, maxy, maxx);
-		if (menus == 1) mainmenu();
-		else if(menus == 2) menucal();
+
+		if (menus == 0) menu_main();
+		else if (menus == 1) menu_cal();
+		else if (menus == 12) menu_cal_numsys(); 
 		menu(y, x, items);
 		bkgd(COLOR_PAIR(1));
 		
-		switch(menu_out)
-		{
-			case 1:
-			{
-				menus = 2;
-				menucal();
-				menu(y, x, items);
-			}	
-			
-		}
+		if (menu_out == 1 && menus == 0) menus = 1;
+		else if (menu_out == 2 && menus == 0);
+		else if (menu_out == 3 && menus == 0);
+		else if (menu_out == 1 && menus == 1);
+		else if (menu_out == 2 && menus == 1) menus = 12;
+
 		if (strcmp(items[menu_out - 1], "<Exit>") == 0)
 		{
 			refresh();
