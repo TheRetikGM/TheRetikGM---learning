@@ -28,8 +28,9 @@ int menu(int y, int x, char (*items) [1024])
 	wrefresh(shadow);
 	wrefresh(win);
 	keypad(win, true);
+	int k = 1;
 
-	while(true)
+	while(k == 1)
 	{
 		for(int i = 1; i <= 4; i++)
 		{
@@ -63,7 +64,7 @@ int menu(int y, int x, char (*items) [1024])
 				break;
 			}
 		}
-		if (choice == 10) break;
+		if (choice == 10) k = 0;
 	}
     menu_out = focused;
     return 0;
