@@ -9,7 +9,7 @@ int menu(int y, int x, char (*items) [1024])
 {
 	int maxx, maxy;
 	int focused = 1;
-	char menuname[] = " Deadly Calculator ";
+	char menuname[] = " Main menu ";
 
 	init_pair(2, COLOR_BLACK, COLOR_WHITE);
     init_pair(3, COLOR_BLUE, COLOR_WHITE);
